@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active:
+    include:
+      - db
+      - security
+server:
+  port: 8081
+
+
+
+
+
+
