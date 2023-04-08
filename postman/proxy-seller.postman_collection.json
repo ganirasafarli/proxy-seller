@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "98ebdbeb-86a8-49fd-be28-9e5ada4c3e4c",
+		"_postman_id": "4db4247f-3c77-4936-8b42-d2e308c4be3e",
 		"name": "proxy-seller",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "9590991"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{

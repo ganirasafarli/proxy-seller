@@ -38,16 +38,17 @@ public class NotesService {
     public Mono<String> likeOrUnlike(String id, String userId) {
         Query query = Query.query(Criteria.where("id").is(id));
         Mono<Note> noteMono = template.findOne(query, Note.class);
-        return noteMono.flatMap(note -> {
-            Update update = new Update().set("updateAt", LocalDateTime.now());
-            if (note == null || note.getLike() == null || !note.getLike().hasUser(userId)) {
-                update.inc("like.like", 1).addToSet("like.userIds", userId);
-                return template.updateFirst(query, update, Note.class).thenReturn("Note liked successfully");
-            } else {
-                update.pull("like.userIds", userId).inc("like.like", -1);
-                return template.updateFirst(query, update, Note.class).thenReturn("Note unliked successfully");
-            }
-        });
+        return noteMono.switchIfEmpty(Mono.error(new NotFoundException(String.format("Note not found for id %s", id))))
+                .flatMap(note -> {
+                    Update update = new Update().set("updateAt", LocalDateTime.now());
+                    if (note == null || note.getLike() == null || !note.getLike().hasUser(userId)) {
+                        update.inc("like.like", 1).addToSet("like.userIds", userId);
+                        return template.updateFirst(query, update, Note.class).thenReturn("Note liked successfully");
+                    } else {
+                        update.pull("like.userIds", userId).inc("like.like", -1);
+                        return template.updateFirst(query, update, Note.class).thenReturn("Note unliked successfully");
+                    }
+                });
     }
 
 
