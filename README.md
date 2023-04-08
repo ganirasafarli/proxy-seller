@@ -21,6 +21,8 @@ which will return a JWT in the response.
 
 
 Postman collection is also available with steps   proxy-seller.postman_collection.json
+Inside postman package there is environment file and in turn inside it there is token. This token is generated when pre-request script (which is inside auth folder) is run.   
+
 
 
  
