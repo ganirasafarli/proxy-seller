@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 public class AssigmentApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(AssigmentApplication.class, args);
     }
 
