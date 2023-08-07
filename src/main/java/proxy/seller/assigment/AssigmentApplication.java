@@ -12,4 +12,5 @@ public class AssigmentApplication {
         SpringApplication.run(AssigmentApplication.class, args);
     }
 
+
 }
